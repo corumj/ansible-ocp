@@ -1,6 +1,6 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
---- 
 cluster_name: {{ cluster_version.resources[0].spec.clusterID }}
+cluster_version: {{ cluster_version.resources[0].status.history[0].version }}
 resource_requirements:
     control_plane: 
         {% for node in control_plane_list.resources %}
