@@ -58,7 +58,7 @@
           register: storage_class
 
         - debug:
-            msg: "{{ lookup('ansible.builtin.template', 'templates/cluster-report.yml.j2') }}"
+            msg: "{{ lookup('ansible.builtin.template', 'templates/cluster-report.yml.j2') | to_nice_yaml }}"
 
         # - name: output as yaml
         #   ansible.builtin.template:
