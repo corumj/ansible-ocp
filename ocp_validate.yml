@@ -57,8 +57,13 @@
             host: "{{ ocp_api }}"
           register: storage_class
 
-        - debug:
-            msg: "{{ lookup('ansible.builtin.template', 'templates/cluster-report.yml.j2') | to_nice_yaml }}"
+        - name: save current cluster report to variable 
+          ansible.builtin.set_fact:
+            cluster_report: "{{ lookup('ansible.builtin.template', 'templates/cluster-report.yml.j2') | from_yaml }}"
+
+        - name: Print out cluster report 
+          ansible.builtin.debug:
+            var: cluster_report 
 
         # - name: output as yaml
         #   ansible.builtin.template:
