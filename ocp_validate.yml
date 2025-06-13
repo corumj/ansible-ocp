@@ -1,6 +1,7 @@
 --- 
 - name: Validate OCP Cluster against blueprint 
   hosts: localhost 
+  gather_facts: False 
   vars:
     ocp_username: "{{ ansible_user }}" 
     ocp_password: "{{ ansible_password }}"
