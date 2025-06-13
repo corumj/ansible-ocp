@@ -1,0 +1,56 @@
+---
+version: 3
+
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9@sha256:9e94b335b66993881a6fd8331050178049eec92475b68dfad8379d2168bcbf77
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core==2.15.13
+  ansible_runner:
+    package_pip: ansible-runner==2.3.6
+  galaxy:
+    collections:
+      - { name: community.general, version: 10.3.0 }
+      - { name: community.postgresql, version: 3.10.2 }
+      - { name: kubernetes.core, version: 5.1.0 }
+      - { name: ansible.posix, version: 1.6.2 }
+      - { name: redhat.insights, version: 1.3.0 }
+      - { name: redhat.rhel_system_roles, version: 1.95.7 }
+      - { name: redhat.satellite_operations, version: 3.0.0 }
+      - { name: redhat.satellite, version: 5.3.0 }
+      - { name: community.crypto, version: 2.26.0 }
+      - { name: hpe.ilo, version: 1.0.41 }
+      - { name: containers.podman, version: 1.16.3 }
+      - { name: community.libvirt }
+      - { name: community.aws }
+      - { name: amazon.aws }
+      - { name: redhat.openshift }
+  python:
+    - passlib
+    - jmespath
+    - boto3 
+    - botocore
+    - b2
+
+  exclude:
+    system:
+      - openshift-clients
+
+additional_build_files:
+  - src: ansible.cfg
+    dest: configs
+
+additional_build_steps:
+  prepend_base:
+    - RUN microdnf -y install python3.11 python3.11-pip 
+
+  prepend_galaxy:
+    # Copy ansible.cfg from build directory to EE
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+
+options:
+  package_manager_path: /usr/bin/microdnf
+  tags:
+      - aap.aj.peripatetic.us/homelab_ee:1.3
