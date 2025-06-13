@@ -2,8 +2,8 @@
 - name: Validate OCP Cluster against blueprint 
   hosts: localhost 
   vars:
-    ocp_username: "{{ username }}" 
-    ocp_password: "{{ password }}"
+    ocp_username: "{{ ansible_username }}" 
+    ocp_password: "{{ ansible_password }}"
     ocp_api: "{{ cluster_api }}"
 
   tasks:
