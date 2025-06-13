@@ -58,13 +58,12 @@
           register: storage_class
 
         - debug:
-            msg: 
-              - "{{ cluster_network }}"
+            msg: "{{ lookup('ansible.builtin.template', 'templates/cluster-report.yml') }}"
 
-        - name: output as yaml
-          ansible.builtin.template:
-            src: templates/cluster-report.yml.j2
-            dest: "./cluster-report.yml"
+        # - name: output as yaml
+        #   ansible.builtin.template:
+        #     src: templates/cluster-report.yml.j2
+        #     dest: "./cluster-report.yml"
 
     #     # - name: Export the data to json file
     #     #   ansible.builtin.copy: content="{{ node_list | to_nice_json }}" dest="./nodes_output.json"
