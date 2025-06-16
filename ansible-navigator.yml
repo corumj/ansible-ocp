@@ -5,7 +5,7 @@ ansible-navigator:
     enabled: true
     # image: aap.aj.peripatetic.us/homelab_ee:1.2
     # image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
-    image: quay.io/jerrycorum/demo_ee:1.0
+    image: quay.io/jerrycorum/demo_ee:1.1
     pull:
       policy: missing
   playbook-artifact:

@@ -19,3 +19,7 @@ networking:
     clusterNetwork:
         cidr: {{ cluster_network.resources[0].spec.clusterNetwork[0].cidr }}
     serviceNetwork: {{ cluster_network.resources[0].spec.serviceNetwork[0] }}
+cnaas:
+    dns:
+        records:
+            Validation options include AWS Route 52, Azure DNS, Gandi.net, Cloudflare, and many others.

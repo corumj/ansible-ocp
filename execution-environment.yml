@@ -33,6 +33,7 @@ dependencies:
     - boto3 
     - botocore
     - b2
+    - dnspython
 
   exclude:
     system:
@@ -52,5 +53,5 @@ additional_build_steps:
 
 options:
   package_manager_path: /usr/bin/microdnf
-  tags:
-      - aap.aj.peripatetic.us/homelab_ee:1.3
+  # tags:
+  #     - quay.io/jerrycorum/demo_ee_b
