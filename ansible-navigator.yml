@@ -3,9 +3,7 @@ ansible-navigator:
   execution-environment:
     container-engine: podman
     enabled: true
-    # image: aap.aj.peripatetic.us/homelab_ee:1.2
-    # image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
-    image: quay.io/jerrycorum/demo_ee:1.1
+    image: quay.io/jerrycorum/demo_ee:1.2
     pull:
       policy: missing
   playbook-artifact:
